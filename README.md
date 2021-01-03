@@ -8,7 +8,7 @@ Terraform 0.14 and newer.Submit pull-requests to `master` branch.
 ## Usage
 
 ```hcl
-module "client-vpn-endpoints" {
+module "dev-cvpn-endpoint" {
   source = "github.com/Alexander-Babichuk/aws-cvpn-endpoints.git"
 
   client_cidr_block     = "172.31.0.0/22"
@@ -22,6 +22,20 @@ module "client-vpn-endpoints" {
     Environment = "dev"
   }
 }
+
+resource "aws_ec2_client_vpn_authorization_rule" "dev-cvpn-endpoint" {
+  client_vpn_endpoint_id = module.dev-cvpn-endpoint.id
+  target_network_cidr    = "10.0.0.0/16"
+  authorize_all_groups   = true
+}
+
+```
+
+```shell
+terraform init
+terraform plan
+terraform apply -auto-approve
+sudo openvpn --config dev_acme_com_cvpn_endpoint.conf
 ```
 
 ## Requirements
