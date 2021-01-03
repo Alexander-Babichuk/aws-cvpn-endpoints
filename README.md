@@ -32,6 +32,7 @@ resource "aws_ec2_client_vpn_authorization_rule" "dev-cvpn-endpoint" {
 ```
 
 ```shell
+cd examples/basic
 terraform init
 terraform plan
 terraform apply -auto-approve

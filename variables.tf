@@ -3,7 +3,7 @@
 # You must provide a value for each of these parameters.
 # ------------------------------------------------------------------------------
 variable "client_cidr_block" {
-  description = " The IPv4 address range, in CIDR notation, from which to assign client IP addresses."
+  description = "The IPv4 address range, in CIDR notation, from which to assign client IP addresses."
   type        = string
 }
 
